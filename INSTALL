@@ -1,0 +1,9 @@
+Building Bungee
+
+See doc/readme-qt.rst for instructions on building Bungee QT,
+the intended-for-end-users, nice-graphical-interface, reference
+implementation of Bungee.
+
+See doc/build-*.txt for instructions on building Bungeed,
+the intended-for-services, no-graphical-interface, reference
+implementation of Bungee.
