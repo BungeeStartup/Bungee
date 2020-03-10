@@ -352,6 +352,11 @@ bool CheckKernel(CBlockIndex* pindexPrev, unsigned int nBits, int64_t nTime, con
         return false;
 
    int nDepth;
+   if (pindexPrev->nHeight+1 < 500) {//ID44
+       nStakeMinConfirmations = nStakeChainStartConfirmations;
+   } else {
+       nStakeMinConfirmations = 300;
+   }
    if (IsConfirmedInNPrevBlocks(txindex, pindexPrev, nStakeMinConfirmations - 1, nDepth))
        return false;
 

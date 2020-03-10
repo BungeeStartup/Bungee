@@ -647,21 +647,21 @@ void ThreadStakeMiner(CWallet *pwallet)
             nLastCoinStakeSearchInterval = 0;
             MilliSleep(1000);
         }
-        /* -------------REMOVED TEMPORARILY------------
+
         while (vNodes.empty() || IsInitialBlockDownload())
         {
             nLastCoinStakeSearchInterval = 0;
             fTryToSync = true;
             MilliSleep(1000);
         }
-        */
+
         if(pindexBest->nHeight < Params().StartPoSBlock()) {
             if(pindexBest->nHeight > 500) {//ID44
                 nLastCoinStakeSearchInterval = 0;
                 MilliSleep(1000);
             }
         }
-        /* -------------REMOVED TEMPORARILY------------
+
         if (fTryToSync)
         {
             fTryToSync = false;
@@ -671,7 +671,6 @@ void ThreadStakeMiner(CWallet *pwallet)
                 continue;
             }
         }
-        */
 
         //
         // Create new block

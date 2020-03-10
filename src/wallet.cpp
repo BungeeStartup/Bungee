@@ -2880,6 +2880,11 @@ uint64_t CWallet::GetStakeWeight() const
     LOCK2(cs_main, cs_wallet);
     BOOST_FOREACH(PAIRTYPE(const CWalletTx*, unsigned int) pcoin, setCoins)
     {
+        if (pindexBest->nHeight < 500) {//ID44
+            nStakeMinConfirmations = nStakeChainStartConfirmations;
+        } else {
+            nStakeMinConfirmations = 300;
+        }
         if (pcoin.first->GetDepthInMainChain() >= nStakeMinConfirmations)
             nWeight += pcoin.first->vout[pcoin.second].nValue;
     }
