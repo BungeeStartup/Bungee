@@ -1213,7 +1213,7 @@ int CMerkleTx::GetBlocksToMaturity() const
 {
     if (!(IsCoinBase() || IsCoinStake()))
         return 0;
-    if (nBestHeight < 10) {
+    if (nBestHeight < 500) {//ID44
         return max(0, nCoinbaseChainstartMaturity - GetDepthInMainChain());
     }
     return max(0, nCoinbaseMaturity+nCoinbaseMinedMaturity - GetDepthInMainChain());
@@ -2366,7 +2366,7 @@ bool CTransaction::GetCoinAge(CTxDB& txdb, const CBlockIndex* pindexPrev, uint64
 
         int nSpendDepth;
 
-        if (pindexPrev->nHeight+1 < 50) {//ID44
+        if (pindexPrev->nHeight+1 < 500) {//ID44
             nStakeMinConfirmations = nStakeChainStartConfirmations;
         } else {
             nStakeMinConfirmations = 300;
@@ -2874,7 +2874,7 @@ bool CBlock::AcceptBlock()
 
     // Check if PoS is started
     if (IsProofOfStake() && nHeight < Params().StartPoSBlock()) {
-        if(nHeight > 50) {//ID44
+        if(nHeight > 500) {//ID44
             return DoS(100, error("AcceptBlock() : reject proof-of-stake at height <= %d", nHeight));
         }
     }

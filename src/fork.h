@@ -12,7 +12,7 @@
 /** Reserve Phase start block */ 
 static const int64_t nReservePhaseStart = 0;
 /** Velocity toggle block */
-static const int64_t VELOCITY_TOGGLE = 55; // Implementation of the Velocity system into the chain.
+static const int64_t VELOCITY_TOGGLE = 2000; // Implementation of the Velocity system into the chain.
 /** Velocity retarget toggle block */
 static const int64_t VELOCITY_TDIFF = 0; // Use Velocity's retargetting method.
 /** Protocol 3.0 toggle */

@@ -341,7 +341,7 @@ void VRX_ThreadCurve(const CBlockIndex* pindexLast, bool fProofOfStake)
 void VRX_Dry_Run(const CBlockIndex* pindexLast)
 {
     // Check for blocks to index | Allowing for initial chain start
-    if (pindexLast->nHeight < scanheight+50) {//ID44
+    if (pindexLast->nHeight < scanheight+2000) {//ID44
         fDryRun = true;
         return; // can't index prevblock
     }
