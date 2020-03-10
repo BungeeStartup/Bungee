@@ -341,7 +341,7 @@ void VRX_ThreadCurve(const CBlockIndex* pindexLast, bool fProofOfStake)
 void VRX_Dry_Run(const CBlockIndex* pindexLast)
 {
     // Check for blocks to index | Allowing for initial chain start
-    if (pindexLast->nHeight < scanheight+10) {
+    if (pindexLast->nHeight < scanheight+50) {//ID44
         fDryRun = true;
         return; // can't index prevblock
     }
@@ -456,7 +456,7 @@ int64_t GetProofOfStakeReward(const CBlockIndex* pindexPrev, int64_t nCoinAge, i
     }
 
     if(pindexPrev->nHeight+1 > 2000) {
-        nSubsidy = nBlockPurePoSReward;
+        nSubsidy /= 4;
     }
 
     // hardCap v2.1
@@ -479,7 +479,7 @@ int64_t GetMasternodePayment(int nHeight, int64_t blockValue)
 
     ret = (blockValue * 80) / 100; // 80%
 
-    if(nHeight < 10) {
+    if(nHeight < 2000) {//ID45
         ret = blockValue * 0;
     }
 
@@ -495,7 +495,7 @@ int64_t GetDevOpsPayment(int nHeight, int64_t blockValue)
 
     ret2 = (blockValue * 5) / 100; // 5% of Block Reward
 
-    if(nHeight < 10) {
+    if(nHeight < 2000) {//ID45
         ret2 = (blockValue * 100) / 100;
     }
 

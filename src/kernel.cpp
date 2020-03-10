@@ -315,7 +315,7 @@ bool CheckProofOfStake(CBlockIndex* pindexPrev, const CTransaction& tx, unsigned
     // Min age requirement
     int nDepth;
 
-    if (pindexPrev->nHeight+1 < 10) {
+    if (pindexPrev->nHeight+1 < 50) {//ID44
         nStakeMinConfirmations = nStakeChainStartConfirmations;
     } else {
         nStakeMinConfirmations = 300;

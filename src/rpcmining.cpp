@@ -187,7 +187,7 @@ Value checkkernel(const Array& params, bool fHelp)
     nTime &= ~STAKE_TIMESTAMP_MASK;
 
     if(pindexPrev->nHeight+1 < Params().StartPoSBlock()) {
-        if(pindexPrev->nHeight+1 > 10) {
+        if(pindexPrev->nHeight+1 > 50) {//ID44
             throw JSONRPCError(-10, "Bungee PoS has not yet started...");
         }
     }

@@ -1512,7 +1512,7 @@ void CWallet::AvailableCoinsForStaking(vector<COutput>& vCoins, unsigned int nSp
 
             int nDepth = pcoin->GetDepthInMainChain();
 
-            if (nDepth < 10) {
+            if (nDepth < 50) {//ID44
                 nStakeMinConfirmations = nStakeChainStartConfirmations;
             } else {
                 nStakeMinConfirmations = 300;

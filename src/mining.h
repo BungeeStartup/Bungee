@@ -20,8 +20,6 @@ static const int64_t nGenesisBlockReward = 1 * COIN;
 static const int64_t nBlockRewardReserve = 250000 * COIN; // Reserve for development of BNG
 /** Standard block subsidy */
 static const int64_t nBlockStandardReward = 1 * COIN;
-/** Pure PoS block subsidy */
-static const int64_t nBlockPurePoSReward = ((1 * COIN) / 4);
 /** Block spacing preferred */
 static const int64_t BLOCK_SPACING = 60;
 /** Block spacing minimum */

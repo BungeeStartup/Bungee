@@ -54,8 +54,8 @@ public:
         pchMessageStart[2] = 0xb1;
         pchMessageStart[3] = 0xb4;
         vAlertPubKey = ParseHex("01b88735a49f1996be6b659c91a1567896532d517698712acdbe165777c2f81f85d131a669df3be611393f454852a2d08c6314bba5ca3cbe5616262da3b1a6afed");
-        nDefaultPort = 77777;
-        nRPCPort = 88888;
+        nDefaultPort = 7777;
+        nRPCPort = 8888;
         bnProofOfWorkLimit = CBigNum(~uint256(0) >> 20);
         bnProofOfStakeLimit = CBigNum(~uint256(0) >> 18);
 
@@ -72,7 +72,7 @@ public:
         genesis.hashPrevBlock = 0;
         genesis.hashMerkleRoot = genesis.BuildMerkleTree();
         genesis.nVersion = 1;
-        genesis.nTime    = timeGenesisBlock; // Sat, December 15, 2018 8:00:00 PM
+        genesis.nTime    = timeGenesisBlock; // TODO: Update date comment
         genesis.nBits    = bnProofOfWorkLimit.GetCompact();
         genesis.nNonce   = 139509;
 

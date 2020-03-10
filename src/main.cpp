@@ -2366,7 +2366,7 @@ bool CTransaction::GetCoinAge(CTxDB& txdb, const CBlockIndex* pindexPrev, uint64
 
         int nSpendDepth;
 
-        if (pindexPrev->nHeight+1 < 10) {
+        if (pindexPrev->nHeight+1 < 50) {//ID44
             nStakeMinConfirmations = nStakeChainStartConfirmations;
         } else {
             nStakeMinConfirmations = 300;
@@ -2874,7 +2874,7 @@ bool CBlock::AcceptBlock()
 
     // Check if PoS is started
     if (IsProofOfStake() && nHeight < Params().StartPoSBlock()) {
-        if(nHeight > 10) {
+        if(nHeight > 50) {//ID44
             return DoS(100, error("AcceptBlock() : reject proof-of-stake at height <= %d", nHeight));
         }
     }
