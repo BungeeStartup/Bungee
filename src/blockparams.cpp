@@ -479,7 +479,7 @@ int64_t GetMasternodePayment(int nHeight, int64_t blockValue)
 
     ret = (blockValue * 80) / 100; // 80%
 
-    if(nHeight < 2000) {//ID45
+    if(nHeight < 1999) {//ID45
         ret = blockValue * 0;
     }
 
@@ -495,7 +495,7 @@ int64_t GetDevOpsPayment(int nHeight, int64_t blockValue)
 
     ret2 = (blockValue * 5) / 100; // 5% of Block Reward
 
-    if(nHeight < 2000) {//ID45
+    if(nHeight < 1999) {//ID45
         ret2 = (blockValue * 100) / 100;
     }
 

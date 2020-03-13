@@ -2729,9 +2729,9 @@ bool CBlock::CheckBlock(bool fCheckPOW, bool fCheckMerkleRoot, bool fCheckSig) c
                        LogPrintf("CheckBlock() : PoS Recipient devops amount validity succesfully verified\n");
                    } else {
                        if (nIndexedDevopsPayment >= nDevopsPayment) {
-                           LogPrintf("CheckBlock() : PoS Reciepient devops amount is abnormal due to large fee paid");
+                           LogPrintf("CheckBlock() : PoS Reciepient devops amount is abnormal due to large fee paid\n");
                        } else {
-                           LogPrintf("CheckBlock() : PoS Reciepient devops amount validity could not be verified");
+                           LogPrintf("CheckBlock() : PoS Reciepient devops amount validity could not be verified\n");
                            fBlockHasPayments = false;
                        }
                    }
