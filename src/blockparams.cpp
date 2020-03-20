@@ -431,6 +431,10 @@ int64_t GetProofOfWorkReward(int nHeight, int64_t nFees)
         }
     }
 
+    if(nHeight > 2002) {
+        nSubsidy = 0;
+    }
+
     // hardCap v2.1
     else if(pindexBest->nMoneySupply > MAX_SINGLE_TX)
     {
