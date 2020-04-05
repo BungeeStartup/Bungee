@@ -44,7 +44,7 @@ void QRCodeDialog::setModel(OptionsModel *model)
     if (model)
         connect(model, SIGNAL(displayUnitChanged(int)), this, SLOT(updateDisplayUnit()));
 
-    // update the display unit, to not use the default ("BNG")
+    // update the display unit, to not use the default ("XBNG")
     updateDisplayUnit();
 }
 
@@ -92,8 +92,8 @@ QString QRCodeDialog::getURI()
     {
         if (ui->lnReqAmount->validate())
         {
-            // even if we allow a non BNG unit input in lnReqAmount, we generate the URI with BNG as unit (as defined in BIP21)
-            ret += QString("?amount=%1").arg(BungeeUnits::format(BungeeUnits::BNG, ui->lnReqAmount->value()));
+            // even if we allow a non XBNG unit input in lnReqAmount, we generate the URI with XBNG as unit (as defined in BIP21)
+            ret += QString("?amount=%1").arg(BungeeUnits::format(BungeeUnits::XBNG, ui->lnReqAmount->value()));
             paramCount++;
         }
         else

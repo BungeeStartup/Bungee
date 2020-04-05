@@ -64,7 +64,7 @@ tradingDialog::tradingDialog(QWidget *parent) :
     /*Market History Table Init*/
     ui->MarketHistoryTable->setColumnCount(5);
     ui->MarketHistoryTable->verticalHeader()->setVisible(false);
-    ui->MarketHistoryTable->setHorizontalHeaderLabels(QStringList()<<"DATE"<<"BUY/SELL"<<"BID/ASK"<<"TOTAL UNITS(BNG)"<<"TOTAL COST(BTC)");
+    ui->MarketHistoryTable->setHorizontalHeaderLabels(QStringList()<<"DATE"<<"BUY/SELL"<<"BID/ASK"<<"TOTAL UNITS(XBNG)"<<"TOTAL COST(BTC)");
     ui->MarketHistoryTable->setRowCount(0);
     int Cellwidth =  ui->MarketHistoryTable->width() / 5;
     ui->MarketHistoryTable->horizontalHeader()->setResizeMode(QHeaderView::Stretch);
@@ -150,18 +150,18 @@ void tradingDialog::UpdaterFunction(){
 
 QString tradingDialog::GetMarketSummary(){
 
-     QString Response = sendRequest("https://bittrex.com/api/v1.1/public/GetMarketSummary?market=btc-BNG");
+     QString Response = sendRequest("https://bittrex.com/api/v1.1/public/GetMarketSummary?market=btc-XBNG");
      return Response;
 }
 
 QString tradingDialog::GetOrderBook(){
 
-      QString  Response = sendRequest("https://bittrex.com/api/v1.1/public/getorderbook?market=BTC-BNG&type=both&depth=50");
+      QString  Response = sendRequest("https://bittrex.com/api/v1.1/public/getorderbook?market=BTC-XBNG&type=both&depth=50");
       return Response;
 }
 
 QString tradingDialog::GetMarketHistory(){
-      QString Response = sendRequest("https://bittrex.com/api/v1.1/public/getmarkethistory?market=BTC-BNG&count=100");
+      QString Response = sendRequest("https://bittrex.com/api/v1.1/public/getmarkethistory?market=BTC-XBNG&count=100");
       return Response;
 }
 
@@ -183,7 +183,7 @@ QString tradingDialog::BuyTX(QString OrderType, double Quantity, double Rate){
             URL += OrderType;
             URL += "?apikey=";
             URL += this->ApiKey;
-            URL += "&nonce=12345434&market=BTC-BNG&quantity=";
+            URL += "&nonce=12345434&market=BTC-XBNG&quantity=";
             URL += str.number(Quantity,'i',8);
             URL += "&rate=";
             URL += str.number(Rate,'i',8);
@@ -199,7 +199,7 @@ QString tradingDialog::SellTX(QString OrderType, double Quantity, double Rate){
             URL += OrderType;
             URL += "?apikey=";
             URL += this->ApiKey;
-            URL += "&nonce=12345434&market=BTC-BNG&quantity=";
+            URL += "&nonce=12345434&market=BTC-XBNG&quantity=";
             URL += str.number(Quantity,'i',8);
             URL += "&rate=";
             URL += str.number(Rate,'i',8);
@@ -228,7 +228,7 @@ QString tradingDialog::Withdraw(double Amount, QString Address, QString Coin){
 QString tradingDialog::GetOpenOrders(){
     QString URL = "https://bittrex.com/api/v1.1/market/getopenorders?apikey=";
             URL += this->ApiKey;
-            URL += "&nonce=12345434&market=BTC-BNG";
+            URL += "&nonce=12345434&market=BTC-XBNG";
 
     QString Response = sendRequest(URL);
     return Response;
@@ -249,7 +249,7 @@ QString tradingDialog::GetDepositAddress(){
 
     QString URL = "https://bittrex.com/api/v1.1/account/getdepositaddress?apikey=";
             URL += this->ApiKey;
-            URL += "&nonce=12345434&currency=BNG";
+            URL += "&nonce=12345434&currency=XBNG";
 
     QString Response = sendRequest(URL);
     return Response;
@@ -259,7 +259,7 @@ QString tradingDialog::GetAccountHistory(){
 
     QString URL = "https://bittrex.com/api/v1.1/account/getorderhistory?apikey=";
             URL += this->ApiKey;
-            URL += "&nonce=12345434&market=BTC-BNG&count=10";
+            URL += "&nonce=12345434&market=BTC-XBNG&count=10";
 
     QString Response = sendRequest(URL);
     return Response;
@@ -283,7 +283,7 @@ int tradingDialog::SetExchangeInfoTextLabels(){
 
     ui->Bid->setText("<b>Bid:</b> <span style='font-weight:bold; font-size:12px; color:Green;'>" + str.number(obj["Bid"].toDouble(),'i',8) + "</span> BTC");
 
-    ui->volumet->setText("<b>BNG Volume:</b> <span style='font-weight:bold; font-size:12px; color:blue;'>" + str.number(obj["Volume"].toDouble(),'i',8) + "</span> BNG");
+    ui->volumet->setText("<b>XBNG Volume:</b> <span style='font-weight:bold; font-size:12px; color:blue;'>" + str.number(obj["Volume"].toDouble(),'i',8) + "</span> XBNG");
 
     ui->volumebtc->setText("<b>BTC Volume:</b> <span style='font-weight:bold; font-size:12px; color:blue;'>" + str.number(obj["BaseVolume"].toDouble(),'i',8) + "</span> BTC");
 
@@ -510,11 +510,11 @@ void tradingDialog::ParseAndPopulateOrderBookTables(QString OrderBook){
         BuyItteration++;
     }
 
-    ui->TXSupply->setText("<b>Supply:</b> <span style='font-weight:bold; font-size:12px; color:blue'>" + str.number(TXSupply,'i',8) + "</span><b> BNG</b>");
+    ui->TXSupply->setText("<b>Supply:</b> <span style='font-weight:bold; font-size:12px; color:blue'>" + str.number(TXSupply,'i',8) + "</span><b> XBNG</b>");
     ui->BtcSupply->setText("<span style='font-weight:bold; font-size:12px; color:blue'>" + str.number(BtcSupply,'i',8) + "</span><b> BTC</b>");
     ui->AsksCount->setText("<b>Ask's :</b> <span style='font-weight:bold; font-size:12px; color:blue'>" + str.number(ui->AsksTable->rowCount()) + "</span>");
 
-    ui->TXDemand->setText("<b>Demand:</b> <span style='font-weight:bold; font-size:12px; color:blue'>" + str.number(TXDemand,'i',8) + "</span><b> BNG</b>");
+    ui->TXDemand->setText("<b>Demand:</b> <span style='font-weight:bold; font-size:12px; color:blue'>" + str.number(TXDemand,'i',8) + "</span><b> XBNG</b>");
     ui->BtcDemand->setText("<span style='font-weight:bold; font-size:12px; color:blue'>" + str.number(BtcDemand,'i',8) + "</span><b> BTC</b>");
     ui->BidsCount->setText("<b>Bid's :</b> <span style='font-weight:bold; font-size:12px; color:blue'>" + str.number(ui->BidsTable->rowCount()) + "</span>");
     obj.empty();
@@ -562,7 +562,7 @@ void tradingDialog::ActionsOnSwitch(int index = -1){
                 case 0:    //buy tab is active
 
                     Response = GetBalance("BTC");
-                    Response2 = GetBalance("BNG");
+                    Response2 = GetBalance("XBNG");
                     Response3 = GetOrderBook();
 
                     if((Response.size() > 0 && Response != "Error") && (Response2.size() > 0 && Response2 != "Error")){
@@ -575,7 +575,7 @@ void tradingDialog::ActionsOnSwitch(int index = -1){
                 break;
 
                 case 1: //Cross send tab active
-                    Response = GetBalance("BNG");
+                    Response = GetBalance("XBNG");
                     Response2 = GetBalance("BTC");
                     if((Response.size() > 0 && Response != "Error") && (Response2.size() > 0 && Response2 != "Error")){
                         DisplayBalance(*ui->BittrexTXLabel, *ui->BittrexBTCLabel, Response, Response2);
@@ -611,9 +611,9 @@ void tradingDialog::ActionsOnSwitch(int index = -1){
                         DisplayBalance(*ui->BitcoinBalanceLabel,*ui->BitcoinAvailableLabel,*ui->BitcoinPendingLabel, QString::fromUtf8("BTC"),Response);
                     }
 
-                    Response = GetBalance("BNG");
+                    Response = GetBalance("XBNG");
                     if(Response.size() > 0 && Response != "Error"){
-                        DisplayBalance(*ui->TXBalanceLabel,*ui->TXAvailableLabel_2,*ui->TXPendingLabel, QString::fromUtf8("BNG"),Response);
+                        DisplayBalance(*ui->TXBalanceLabel,*ui->TXAvailableLabel_2,*ui->TXPendingLabel, QString::fromUtf8("XBNG"),Response);
                     }
                 break;
 
@@ -714,7 +714,7 @@ void tradingDialog::CalculateSellCostLabel(){
 void tradingDialog::CalculateCSReceiveLabel(){
 
     //calculate amount of currency than can be INSaNered to bitcoin
-    QString balance = GetBalance("BNG");
+    QString balance = GetBalance("XBNG");
     QString buyorders = GetOrderBook();
 
     QJsonObject BuyObject = GetResultObjectFromJSONObject(buyorders);
@@ -914,8 +914,8 @@ void tradingDialog::on_GenDepositBTN_clicked()
 
 void tradingDialog::on_Sell_Max_Amount_clicked()
 {
-    //calculate amount of BTC that can be gained from selling BNG available balance
-    QString responseA = GetBalance("BNG");
+    //calculate amount of BTC that can be gained from selling XBNG available balance
+    QString responseA = GetBalance("XBNG");
     QString str;
     QJsonObject ResultObject =  GetResultObjectFromJSONObject(responseA);
 
@@ -993,7 +993,7 @@ void tradingDialog::on_CS_Max_Amount_clicked()
 void tradingDialog::on_Withdraw_Max_Amount_clicked()
 {
     //calculate amount of currency than can be brought with the BTC balance available
-    QString responseA = GetBalance("BNG");
+    QString responseA = GetBalance("XBNG");
     QString str;
 
     QJsonObject ResultObject =  GetResultObjectFromJSONObject(responseA);
@@ -1104,7 +1104,7 @@ void tradingDialog::on_BuyTX_clicked()
 
     QString Msg = "Are you sure you want to buy ";
             Msg += ui->UnitsInput->text();
-            Msg += "BNG @ ";
+            Msg += "XBNG @ ";
             Msg += ui->BuyBidPriceEdit->text();
             Msg += " BTC Each";
 
@@ -1144,7 +1144,7 @@ void tradingDialog::on_SellTXBTN_clicked()
 
     QString Msg = "Are you sure you want to Sell ";
             Msg += ui->UnitsInputTX->text();
-            Msg += " BNG @ ";
+            Msg += " XBNG @ ";
             Msg += ui->SellBidPriceEdit->text();
             Msg += " BTC Each";
 
@@ -1270,10 +1270,10 @@ void tradingDialog::on_CSUnitsBtn_clicked()
                         if (ResponseObject["success"].toBool() == false){
                             QMessageBox::information(this,"Failed",ResponseObject["message"].toString());
                         } else if (ResponseObject["success"].toBool() == true){
-                            QMessageBox::information(this,"Success","<center>Cross-Send Successful</center>\n Sold "+Astr.number(Qty,'i',4)+" BNG for "+Qstr.number((ui->CSUnitsInput->text().toDouble()-0.0002),'i',8)+" BTC");
+                            QMessageBox::information(this,"Success","<center>Cross-Send Successful</center>\n Sold "+Astr.number(Qty,'i',4)+" XBNG for "+Qstr.number((ui->CSUnitsInput->text().toDouble()-0.0002),'i',8)+" BTC");
                         }
                     } else if (ResponseObject["success"].toBool() == true){
-                        QMessageBox::information(this,"Success","<center>Cross-Send Successful</center>\n Sold "+Astr.number(Qty,'i',4)+" BNG for "+Qstr.number((ui->CSUnitsInput->text().toDouble()-0.0002),'i',8)+" BTC");
+                        QMessageBox::information(this,"Success","<center>Cross-Send Successful</center>\n Sold "+Astr.number(Qty,'i',4)+" XBNG for "+Qstr.number((ui->CSUnitsInput->text().toDouble()-0.0002),'i',8)+" BTC");
                     }
                 }
                 break;
@@ -1285,10 +1285,10 @@ void tradingDialog::on_WithdrawUnitsBtn_clicked()
 {
     double Quantity = ui->WithdrawUnitsInput->text().toDouble();
     QString Qstr;
-    QString Coin = "BNG";
+    QString Coin = "XBNG";
     QString Msg = "Are you sure you want to Withdraw ";
             Msg += Qstr.number((Quantity - 0.02),'i',8);
-            Msg += " BNG to ";
+            Msg += " XBNG to ";
             Msg += ui->WithdrawAddress->text();
             Msg += " ?";
 

@@ -138,7 +138,7 @@ bool parseBungeeURI(const QUrl &uri, SendCoinsRecipient *out)
         {
             if(!i->second.isEmpty())
             {
-                if(!BungeeUnits::parse(BungeeUnits::BNG, i->second, &rv.amount))
+                if(!BungeeUnits::parse(BungeeUnits::XBNG, i->second, &rv.amount))
                 {
                     return false;
                 }

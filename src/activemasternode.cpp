@@ -9,7 +9,7 @@
 #include "clientversion.h"
 
 //
-// Bootup the masternode, look for a 2,000,000 BNG input and register on the network
+// Bootup the masternode, look for a 2,000,000 XBNG input and register on the network
 //
 void CActiveMasternode::ManageStatus()
 {

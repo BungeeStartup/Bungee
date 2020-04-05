@@ -52,9 +52,9 @@ public:
      */
     enum Unit
     {
-        BNG,
-        mBNG,
-        uBNG
+        XBNG,
+        mXBNG,
+        uXBNG
     };
 
     enum SeparatorStyle

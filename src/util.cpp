@@ -1110,13 +1110,13 @@ void PrintExceptionContinue(std::exception* pex, const char* pszThread)
 boost::filesystem::path GetDefaultDataDir()
 {
     namespace fs = boost::filesystem;
-    // Windows < Vista: C:\Documents and Settings\Username\Application Data\BNG
-    // Windows >= Vista: C:\Users\Username\AppData\Roaming\BNG
-    // Mac: ~/Library/Application Support/BNG
-    // Unix: ~/.BNG
+    // Windows < Vista: C:\Documents and Settings\Username\Application Data\XBNG
+    // Windows >= Vista: C:\Users\Username\AppData\Roaming\XBNG
+    // Mac: ~/Library/Application Support/XBNG
+    // Unix: ~/.XBNG
 #ifdef WIN32
     // Windows
-    return GetSpecialFolderPath(CSIDL_APPDATA) / "BNG";
+    return GetSpecialFolderPath(CSIDL_APPDATA) / "XBNG";
 #else
     fs::path pathRet;
     char* pszHome = getenv("HOME");
@@ -1128,10 +1128,10 @@ boost::filesystem::path GetDefaultDataDir()
     // Mac
     pathRet /= "Library/Application Support";
     fs::create_directory(pathRet);
-    return pathRet / "BNG";
+    return pathRet / "XBNG";
 #else
     // Unix
-    return pathRet / ".BNG";
+    return pathRet / ".XBNG";
 #endif
 #endif
 }

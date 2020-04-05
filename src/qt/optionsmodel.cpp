@@ -53,7 +53,7 @@ void OptionsModel::Init()
 
     // Display
     if (!settings.contains("nDisplayUnit"))
-        settings.setValue("nDisplayUnit", BungeeUnits::BNG);
+        settings.setValue("nDisplayUnit", BungeeUnits::XBNG);
     nDisplayUnit = settings.value("nDisplayUnit").toInt();
     
     fUseDarkTheme = settings.value("fUseDarkTheme", false).toBool();

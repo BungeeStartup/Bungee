@@ -18,9 +18,9 @@ BungeeUnits::BungeeUnits(QObject *parent):
 QList<BungeeUnits::Unit> BungeeUnits::availableUnits()
 {
     QList<BungeeUnits::Unit> unitlist;
-    unitlist.append(BNG);
-    unitlist.append(mBNG);
-    unitlist.append(uBNG);
+    unitlist.append(XBNG);
+    unitlist.append(mXBNG);
+    unitlist.append(uXBNG);
     return unitlist;
 }
 
@@ -28,9 +28,9 @@ bool BungeeUnits::valid(int unit)
 {
     switch(unit)
     {
-    case BNG:
-    case mBNG:
-    case uBNG:
+    case XBNG:
+    case mXBNG:
+    case uXBNG:
         return true;
     default:
         return false;
@@ -41,9 +41,9 @@ QString BungeeUnits::name(int unit)
 {
     switch(unit)
     {
-    case BNG: return QString("BNG");
-    case mBNG: return QString("mBNG");
-    case uBNG: return QString::fromUtf8("μBNG");
+    case XBNG: return QString("XBNG");
+    case mXBNG: return QString("mXBNG");
+    case uXBNG: return QString::fromUtf8("μXBNG");
     default: return QString("???");
     }
 }
@@ -52,9 +52,9 @@ QString BungeeUnits::description(int unit)
 {
     switch(unit)
     {
-    case BNG: return QString("Bungees");
-    case mBNG: return QString("Milli-Bungees (1 / 1,000)");
-    case uBNG: return QString("Micro-Bungees (1 / 1,000,000)");
+    case XBNG: return QString("Bungees");
+    case mXBNG: return QString("Milli-Bungees (1 / 1,000)");
+    case uXBNG: return QString("Micro-Bungees (1 / 1,000,000)");
     default: return QString("???");
     }
 }
@@ -63,9 +63,9 @@ qint64 BungeeUnits::factor(int unit)
 {
     switch(unit)
     {
-    case BNG:  return 100000000;
-    case mBNG: return 100000;
-    case uBNG: return 100;
+    case XBNG:  return 100000000;
+    case mXBNG: return 100000;
+    case uXBNG: return 100;
     default:   return 100000000;
     }
 }
@@ -74,9 +74,9 @@ int BungeeUnits::amountDigits(int unit)
 {
     switch(unit)
     {
-    case BNG: return 11;  // 21,000,000,000         (# digits, without commas)
-    case mBNG: return 14; // 21,000,000,000,000
-    case uBNG: return 17; // 21,000,000,000,000,000
+    case XBNG: return 11;  // 21,000,000,000         (# digits, without commas)
+    case mXBNG: return 14; // 21,000,000,000,000
+    case uXBNG: return 17; // 21,000,000,000,000,000
     default: return 0;
     }
 }
@@ -85,9 +85,9 @@ int BungeeUnits::decimals(int unit)
 {
     switch(unit)
     {
-    case BNG: return 8;
-    case mBNG: return 5;
-    case uBNG: return 2;
+    case XBNG: return 8;
+    case mXBNG: return 5;
+    case uXBNG: return 2;
     default: return 0;
     }
 }

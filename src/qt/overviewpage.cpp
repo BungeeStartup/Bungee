@@ -25,7 +25,7 @@ class TxViewDelegate : public QAbstractItemDelegate
 {
     Q_OBJECT
 public:
-    TxViewDelegate(): QAbstractItemDelegate(), unit(BungeeUnits::BNG)
+    TxViewDelegate(): QAbstractItemDelegate(), unit(BungeeUnits::XBNG)
     {
 
     }
@@ -263,7 +263,7 @@ void OverviewPage::setWalletModel(WalletModel *model)
         connect(model, SIGNAL(notifyWatchonlyChanged(bool)), this, SLOT(updateWatchOnlyLabels(bool)));
     }
 
-    // update the display unit, to not use the default ("BNG")
+    // update the display unit, to not use the default ("XBNG")
     updateDisplayUnit();
 }
 
