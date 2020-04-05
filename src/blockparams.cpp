@@ -433,6 +433,9 @@ int64_t GetProofOfWorkReward(int nHeight, int64_t nFees)
 
     if(nHeight > 2002) {
         nSubsidy = 0;
+        if(nHeight < 5001) {
+            nSubsidy = 1 * COIN;
+        }
     }
 
     // hardCap v2.1

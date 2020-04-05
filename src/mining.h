@@ -9,6 +9,7 @@
 #define BITCOIN_MINING_H
 
 #include "bignum.h"
+#include "util.h"
 
 /** Minimum nCoinAge required to stake PoS */
 static const unsigned int nStakeMinAge = 2 / 60; // 30 minutes
@@ -35,7 +36,7 @@ static const int64_t MNengine_POOL_MAX = (1000 * COIN);
 /** MasterNode required collateral */
 inline int64_t MasternodeCollateral(int nHeight) { return 100000; } // 100,000 BNG required as collateral
 /** Coinbase transaction outputs can only be staked after this number of new blocks (network rule) */
-static int nStakeMinConfirmations = 300;
+static int nStakeMinConfirmations = 30;
 /** Coinbase transaction outputs can only be staked after this number of new blocks for chain start (network rule) */
 static const int nStakeChainStartConfirmations = 3;
 /** Coinbase transaction outputs can only be spent after this number of new blocks (network rule) */

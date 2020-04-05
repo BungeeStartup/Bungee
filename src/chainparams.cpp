@@ -103,7 +103,7 @@ public:
         nPoolMaxTransactions = 9;
         strMNenginePoolDummyAddress = "BCgshcLMgKnZKej8ck5TXkzT9zFezRs4G6";
         strDevOpsAddress = "BPc6u7NybcDVi5xNXYDLPQ2HvbC7BtbY8m";
-        nEndPoWBlock = 3000;
+        nEndPoWBlock = 4000;
         nStartPoSBlock = 1999;
     }
 
